@@ -6,7 +6,14 @@
   <dt>Name</dt>
   <dd><%= @dish.name %></dd>
 
-  <dt>Cuisine ID</dt>
-  <dd><%= @dish.cuisine_id %></dd>
+  <dt>Cuisine</dt>
+  <dd><%= Cuisine.find(@dish.cuisine_id).name %></dd>
+
+  <dt>Favorites</dt>
+  <dd>
+    <% @dish_favorites.each do |favorite| %>
+      <li> <%= Venue.find(favorite.venue_id).name %> (<%= User.find(favorite.user_id).username %>) </li>
+    <% end %>
+  </dd>
 
 </dl>

@@ -6,8 +6,8 @@
   <dt>Name</dt>
   <dd><%= @venue.name %></dd>
 
-  <dt>Neighborhood ID</dt>
-  <dd><%= @venue.neighborhood_id %></dd>
+  <dt>Neighborhood</dt>
+  <dd><%= Neighborhood.find(@venue.neighborhood_id).name %></dd>
 
   <dt>Address</dt>
   <dd><%= @venue.address %></dd>
@@ -48,6 +48,14 @@
     </script>
     <div id="map-canvas"></div>
   </dd>
+
+  <dt>Favorites</dt>
+  <dd>
+    <% @venue_favorites.each do |favorite| %>
+      <li> <%= Dish.find(favorite.dish_id).name %> (<%= User.find(favorite.user_id).username %>) </li>
+    <% end %>
+  </dd>
+
 </dl>
 
 
